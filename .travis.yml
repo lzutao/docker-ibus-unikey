@@ -8,12 +8,12 @@ before_install:
 install:
 before_script:
 script:
-  - docker build -t docker-ibus-unikey .
-  - docker run --rm --network host docker-ibus-unikey dpkg -l | egrep 'libibus-1.0-dev|libgtk2.0-dev|meson'
+  - docker build -t ibus-unikey . --network host
+  - docker run --rm --network host ibus-unikey dpkg -l | egrep 'libibus-1.0-dev|libgtk2.0-dev|meson'
   - docker images
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker tag docker-ibus-unikey "$DOCKER_USERNAME"/ibus-unikey
+  - docker tag ibus-unikey "$DOCKER_USERNAME"/ibus-unikey
   - docker push "$DOCKER_USERNAME"/ibus-unikey
 after_failure:
 after_failure:
