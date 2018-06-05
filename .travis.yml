@@ -3,14 +3,26 @@ sudo: required
 # Enable C++ support
 language: cpp
 services:
-  - docker
+  - docker      # docker still need sudo to start its service
 before_install:
-  - docker build -t withgit .
 install:
 before_script:
 script:
-  - docker run --network host withgit
+  - docker build -t docker-ibus-unikey .
+  - docker run --rm --network host docker-ibus-unikey apt list libibus-1.0-dev libgtk2.0-dev meson
+  - docker images
 after_success:
+<<<<<<< HEAD
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker tag docker-ibus-unikey "$DOCKER_USERNAME"/ibus-unikey
+  - docker push "$DOCKER_USERNAME"/ibus-unikey
+after_failure:
+before_deploy:
+=======
+>>>>>>> b33aec5... fix travis build fail
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker tag docker-ibus-unikey $DOCKER_USERNAME/docker-ibus-unikey
+  - docker push $DOCKER_USERNAME/travis-ci-build-stages-demo
 after_failure:
 before_deploy:
 deploy:
