@@ -1,0 +1,18 @@
+dist: trusty
+sudo: required
+# Enable C++ support
+language: cpp
+services:
+  - docker
+before_install:
+  - docker build -t withgit .
+install:
+before_script:
+script:
+  - docker run --network host withgit
+after_success:
+after_failure:
+before_deploy:
+deploy:
+after_deploy:
+after_script:
