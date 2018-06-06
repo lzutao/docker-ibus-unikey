@@ -13,7 +13,9 @@ RUN apt-get update -qq \
     && apt-get upgrade -qq \
     && apt-get install -qq g++ libibus-1.0-dev libgtk2.0-dev meson \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/man/?? /usr/share/man/??_* /usr/share/man/??.* \
+    && find /usr/share/locale -mindepth 1 -maxdepth 1 ! -name 'en' -exec rm -rf {} +
 
-# Run app.py when the container launches
+# Run command when the container launches
 #CMD ["echo", "hello world!"]

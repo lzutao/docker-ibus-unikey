@@ -1,7 +1,5 @@
 # Docker IBus Unikey
 
-Use Docker Automated Build instead of Travis.
-
 Add `[ci skip]` or `[skip ci]` to the git commit message if you changed only this `README.md`.
 
 [![Docker Build Status][docker shield]][docker hub]
