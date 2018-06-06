@@ -10,7 +10,7 @@ This is an effort for building a stable test environment for the IBus Unikey. Yo
 
 **See also**:
 
-* [ibus-unikey]: An Vietnamese Input Method Engine for [IBus][ibus-wiki] using Unikey Engine.
+* [ibus-unikey]: A Vietnamese Input Method Engine for [IBus][ibus-wiki] using Unikey Engine.
 
 [docker shield]: https://img.shields.io/docker/build/lzutao/docker-ibus-unikey.svg?style=flat-square
 [docker hub]: https://hub.docker.com/r/lzutao/docker-ibus-unikey/
