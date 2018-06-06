@@ -1,1 +1,56 @@
-[![Build Status](https://travis-ci.com/lzutao/docker-ibus-unikey.svg?branch=master)](https://travis-ci.com/lzutao/docker-ibus-unikey)
+# Docker IBus Unikey
+
+[![Build Status][travis shield]](https://travis-ci.com/lzutao/docker-ibus-unikey)
+
+Docker image basics for building ibus-unikey using [Ubuntu 18.04][ubuntu 18] and
+[Meson] build system.
+
+This is an effort for building a stable test environment for the IBus Unikey.
+You may find this on [docker hub].
+
+**See also**:
+
+* [ibus-unikey]: An Vietnamese Input Method Engine for [IBus][ibus-wiki] using Unikey Engine.
+
+[travis shield]: https://travis-ci.com/lzutao/docker-ibus-unikey.svg?branch=master
+[docker hub]: https://hub.docker.com/r/lzutao/ibus-unikey/
+[ibus-unikey]: https://github.com/lzutao/ibus-unikey
+[ibus-wiki]: https://en.wikipedia.org/wiki/Intelligent_Input_Bus
+[ubuntu 18]: https://www.ubuntu.com/
+[Meson]: http://mesonbuild.com/
+
+## Usage with Ibus Unikey on Travis
+
+Travis automatic downloads the reposity to `TRAVIS_BUILD_DIR`, hence an example `.travis.yml`:
+```yaml
+dist: trusty
+sudo: required
+language: cpp
+services:
+  - docker          # docker still needs sudo
+compiler:
+  - gcc
+before_install:
+  - docker pull lzutao/ibus-unikey
+install:
+before_script:
+script:
+  - docker run --rm -v "$TRAVIS_BUILD_DIR":/SRC lzutao/ibus-unikey sh -c "\
+      && cd /SRC \
+      && meson builddir --prefix=/usr --libexec=lib/ibus \
+      && ninja -C builddir install \
+      && /usr/lib/ibus/ibus-engine-unikey  --version \
+      && /usr/lib/ibus/ibus-setup-unikey   --version"
+after_success:
+after_failure:
+before_deploy:
+deploy:
+after_deploy:
+after_script:
+```
+
+## LICENSE
+
+Docker IBus Unikey is offered under the terms of the [MTT Licence][LICENCE].
+
+[LICENCE]: COPYING
