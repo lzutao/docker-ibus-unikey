@@ -4,20 +4,18 @@ Use Docker Automated Build instead of Travis.
 
 Add `[ci skip]` or `[skip ci]` to the git commit message if you changed only this `README.md`.
 
-[![Build Status][travis shield]](https://travis-ci.com/lzutao/docker-docker-ibus-unikey)
+[![Docker Build Status][docker shield]][docker hub]
 
-Docker image basics for building docker-ibus-unikey using [Ubuntu 18.04][ubuntu 18] and
-[Meson] build system.
+Docker image basics for building docker-ibus-unikey using [Ubuntu 18.04][ubuntu 18] and [Meson] build system.
 
-This is an effort for building a stable test environment for the IBus Unikey.
-You may find this on [docker hub].
+This is an effort for building a stable test environment for the IBus Unikey. You may find this on [docker hub].
 
 **See also**:
 
 * [ibus-unikey]: An Vietnamese Input Method Engine for [IBus][ibus-wiki] using Unikey Engine.
 
-[travis shield]: https://travis-ci.com/lzutao/docker-ibus-unikey.svg?branch=master
-[docker hub]: https://hub.docker.com/r/lzutao/ibus-unikey/
+[docker shield]: https://img.shields.io/docker/build/lzutao/docker-ibus-unikey.svg?style=flat-square
+[docker hub]: https://hub.docker.com/r/lzutao/docker-ibus-unikey/
 [ibus-unikey]: https://github.com/lzutao/ibus-unikey
 [ibus-wiki]: https://en.wikipedia.org/wiki/Intelligent_Input_Bus
 [ubuntu 18]: https://www.ubuntu.com/
