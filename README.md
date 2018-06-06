@@ -1,8 +1,12 @@
 # Docker IBus Unikey
 
-[![Build Status][travis shield]](https://travis-ci.com/lzutao/docker-ibus-unikey)
+Use Docker Automated Build instead of Travis.
 
-Docker image basics for building ibus-unikey using [Ubuntu 18.04][ubuntu 18] and
+Add `[ci skip]` or `[skip ci]` to the git commit message if you changed only this `README.md`.
+
+[![Build Status][travis shield]](https://travis-ci.com/lzutao/docker-docker-ibus-unikey)
+
+Docker image basics for building docker-ibus-unikey using [Ubuntu 18.04][ubuntu 18] and
 [Meson] build system.
 
 This is an effort for building a stable test environment for the IBus Unikey.
@@ -31,15 +35,14 @@ services:
 compiler:
   - gcc
 before_install:
-  - docker pull lzutao/ibus-unikey
+  - docker pull lzutao/docker-ibus-unikey
 install:
 before_script:
 script:
-  - docker run --rm -v "$TRAVIS_BUILD_DIR":/SRC lzutao/ibus-unikey sh -c "\
-      && cd /SRC \
-      && meson builddir --prefix=/usr --libexec=lib/ibus \
-      && ninja -C builddir install \
-      && /usr/lib/ibus/ibus-engine-unikey  --version \
+  - docker run --rm -v "$TRAVIS_BUILD_DIR":/SRC lzutao/docker-ibus-unikey sh -c "cd /SRC
+      && meson builddir --prefix=/usr --libexec=lib/ibus
+      && ninja -C builddir install
+      && /usr/lib/ibus/ibus-engine-unikey  --version
       && /usr/lib/ibus/ibus-setup-unikey   --version"
 after_success:
 after_failure:

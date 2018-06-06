@@ -4,6 +4,9 @@ sudo: required
 language: cpp
 services:
   - docker      # docker still need sudo to start its service
+git:
+  depth: 1
+  submodules: false
 before_install:
 install:
 before_script:
