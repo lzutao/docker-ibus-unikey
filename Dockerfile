@@ -6,10 +6,11 @@ LABEL maintainer="lzutao https://github.com/lzutao/docker-ibus-unikey"
 # Set the working directory to /root
 WORKDIR /root
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV LANG="C.UTF-8"
 
 # Install packages for building ibus-unikey
-RUN apt-get update -qq && apt-get install -qq \
+RUN export DEBIAN_FRONTEND="noninteractive" && \
+    apt-get update -qq && apt-get install -qq \
     g++ \
     libibus-1.0-dev \
     libgtk2.0-dev \
